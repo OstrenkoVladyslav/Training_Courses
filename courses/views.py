@@ -24,7 +24,7 @@ class CourseDetailView(DetailView):
 
 class CourseCreateView(CreateView):
     model = Course
-    fields = ['name','short_description','description','coach','assistant']
+    fields = ['name','short_description','description','coach']
     success_url = reverse_lazy('index')
     template_name = 'courses/add.html'
     context_object_name = 'course'

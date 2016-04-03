@@ -57,20 +57,4 @@
       </table>
       </div>
     </div>
-    <br>
-    <div class="StudentTable">
-      <div class="StudentTable">
-      <table class="table-hover">
-        <tr>
-          <td>Ассистент</td>
-        </tr>
-        <tr>
-          <td>
-            <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.get_name }} {{ course.assistant.get_surname }}</a>
-            <br>
-            {{ course.assistant.description }}
-          </td>
-        </tr>
-      </table>
-    </div>
 {% endblock content %}

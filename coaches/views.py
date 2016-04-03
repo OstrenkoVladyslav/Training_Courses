@@ -1,6 +1,6 @@
 from django.shortcuts import render,  get_object_or_404
-from django.db import models
-from coaches.models import *
+from django.views.generic.detail import DetailView
+from coaches.models import Coach
 from courses.models import Course
 
 """def list_view(request):
@@ -15,7 +15,7 @@ from courses.models import Course
     return render(request, 'course_students.html', {'students': students,
         'selection': selection})
 """
-
+"""
 def detail(request, coach_id):
     coach = models.Coach.objects.get(id = coach_id)
     is_coach = []
@@ -31,3 +31,26 @@ def detail(request, coach_id):
             "is_assistant": is_assistant,
             "coach": coach
             })
+"""
+
+class CoachDetailView(DetailView):
+    model = Coach
+    print("START")
+    is_coach = []
+#    coach = models.Coach.objects.get(id = coach_id)
+    print("Coach=")
+    print(Coach)
+    for i in Course.objects.all():
+        print("i=")
+        print(i)
+        print("i.coach=")
+        print(i.coach)
+        if i.coach == object:
+            is_coach.append(i)
+            print(i)
+        print(is_coach)
+    def get_context_data(self, **kwargs):
+        context = super(CoachDetailView, self).get_context_data(**kwargs)
+        context['courses'] = is_coach
+        return context
+
