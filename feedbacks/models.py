@@ -12,5 +12,5 @@ class Feedback(models.Model):
     from_email =  models.EmailField('Your e-mail')
     create_date = models.DateTimeField(default=timezone.now)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

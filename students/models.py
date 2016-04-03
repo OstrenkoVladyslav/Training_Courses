@@ -19,5 +19,5 @@ class Student(models.Model):
     #seq = (name, surname)
     #s = ' '
     #full_name = name + surname
-    def __unicode__(self):
+    def __str__(self):
         return self.name

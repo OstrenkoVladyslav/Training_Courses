@@ -25,5 +25,5 @@ class Coach(models.Model):
     def get_is_staff(self):
         return self.is_staff
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.first_name
