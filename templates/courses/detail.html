@@ -7,9 +7,9 @@
 
 {% block content %}
     <div class="jumbotron">
-      <h1 class="shad">{{ course.name }}</h1>
+      <h1>{{ course.name }}</h1>
       <h2></h2>
-      <p>{{ course.description|truncatechars:32 }}</p>
+      <p>{{ course.description }}</p>
       <hr>
       {% include "include/message_include.html" %}
     <div class="StudentTable">
@@ -39,8 +39,7 @@
     <a href="{% url 'courses:add-lesson' course.id %}"><b>
     <button type="button">Добавить занятие</button>
     </b></a>
-
-    <h2>Преподаватели:</h2>
+    <br/><br/>
     <div class="StudentTable">
       <div class="StudentTable">
       <table class="table-hover">

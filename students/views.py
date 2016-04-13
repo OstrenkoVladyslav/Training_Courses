@@ -17,8 +17,7 @@ logger=logging.getLogger('students')
 
 class StudentListView(ListView):
     model = Student
-    paginate_by = 2
-    #paginator = Paginator(super(StudentListView, self).get_queryset())
+    paginate_by = 5
     def get_queryset(self):
         qs = super(StudentListView, self).get_queryset()
         course_id = self.request.GET.get('course_id', None)
@@ -64,36 +63,3 @@ class StudentDeleteView(DeleteView):
         context['title'] = u"Student info suppression"
         return context
     success_url = reverse_lazy('students:list_view')
-
-
-def create(request):
-    if request.POST:
-        form = StudentModelForm(request.POST)
-        if form.is_valid():
-            form.save()
-            text = u"Студент " + form.cleaned_data['name'] + " " + form.cleaned_data['surname'] + u" успешно добавлен"
-            messages.success(request, text)
-            return redirect('students:list_view')
-    else:
-        form = StudentModelForm()
-    return render(request, 'students/add.html', {'form': form})
-
-def edit(request, student_id):
-    sd = Student.objects.get(id=student_id)
-    form = StudentModelForm(instance=sd)
-    if request.POST:
-        form = StudentModelForm(request.POST, instance=sd)
-        if form.is_valid():
-            form.save()
-            text = "Информация о студенте успешно изменена"
-            messages.success(request, text)
-    return render(request, 'students/edit.html', {'form': form})
-
-def remove(request, student_id):
-    sd = Student.objects.get(id=student_id)
-    if request.POST:
-        text = "Информация о " + str(sd) + " была успешно удалена"
-        messages.success(request, text)
-        sd.delete()
-        return redirect('students:list_view')
-    return render(request, 'students/remove.html', {'sd': sd})
