@@ -7,14 +7,8 @@ class CoachDetailView(DetailView):
     model = Coach
     is_coach = []
     for i in Course.objects.all():
-        print("i=")
-        print(i)
-        print("i.coach=")
-        print(i.coach)
         if i.coach == object:
             is_coach.append(i)
-            print(i)
-        print(is_coach)
     def get_context_data(self, **kwargs):
         context = super(CoachDetailView, self).get_context_data(**kwargs)
         context['courses'] = is_coach
